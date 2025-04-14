@@ -1,11 +1,11 @@
 "use client";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import Header from "./Header";
 import SideNavBar from "./SideNavBar";
 import SettingsSection from "./SettingSection";
 import CategorySection from "./CategorySection";
-import { nav_icon } from "../data/data";
 import NavbarMobile from "./NavbarMobile";
+import SkeletonCategory from "./SkeletonCategory";
 
 const Layout = ({ children }) => {
   const [isSettingVisible, setIsSettingVisible] = useState(false);
@@ -33,10 +33,12 @@ const Layout = ({ children }) => {
         <SideNavBar />
         {/* Main Content */}
         <div className="mx-2 h-[85.5vh] lg:min-w-[350px] overflow-hidden bg-white lg:h-[85vh] space-y-10 overflow-y-auto ">
-          <CategorySection
-            toggleCategory={toggleCategory}
-            isCategoryVisible={isCategoryVisible}
-          />
+          <Suspense fallback={<SkeletonCategory />}>
+            <CategorySection
+              toggleCategory={toggleCategory}
+              isCategoryVisible={isCategoryVisible}
+            />
+          </Suspense>
         </div>
         <main className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100 mr-3 lg:mr-0">
           {children}
@@ -47,7 +49,7 @@ const Layout = ({ children }) => {
           isSettingVisible={isSettingVisible}
         />
         {/* navbar for mobile */}
-        <NavbarMobile/>
+        <NavbarMobile />
       </div>
     </div>
   );
