@@ -1,5 +1,5 @@
 import React from "react";
-import { nav_icon } from "./data/data";
+import { nav_icon } from "../data/data";
 
 const SideNavBar = () => {
   return (
