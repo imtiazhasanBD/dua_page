@@ -1,14 +1,14 @@
 import { IoSearchOutline } from "react-icons/io5";
 import { AiOutlineMenu } from "react-icons/ai";
 
-const Header = ({toggleSetting}) => {
+const Header = ({toggleSetting, toggleCategory}) => {
 
   return (
     <section className="flex items-center justify-between z-10 gap-28 2xl:gap-52 w-full">
       {/* Left Side - Title */}
       <div className="flex items-center justify-between w-full ">
         <div className="flex gap-4 items-center">
-        <AiOutlineMenu  className="w-6 h-6 lg:hidden" />
+        <AiOutlineMenu onClick={toggleCategory} className="w-6 h-6 lg:hidden" />
           <div className="m-auto lg:hidden">
             <img
               src="/nav_icon/dua-logo.svg"
