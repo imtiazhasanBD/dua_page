@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import SkeletonLoader from "./components/SkeletonLoader";
 
 export default function Home() {
   const router = useRouter();
@@ -11,8 +12,6 @@ export default function Home() {
   }, [router]);
 
   return (
-      <div className=" bg-white h-screen py-[1000px] mr-1">
-        <h2 className="text-lg font-semibold">Main Content Area</h2>
-      </div>
+    <SkeletonLoader/>
   );
 }
